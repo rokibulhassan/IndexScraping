@@ -1,24 +1,83 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+### This is an simple to scrap a site index page.
 
-Things you may want to cover:
+##How to run
 
-* Ruby version
+```
+git clone https://github.com/rokibulhassan/IndexScraping.git
+cd IndexScraping
+rake db:create
+rake db:migrate
+rails server
+```
 
-* System dependencies
+### It will run on localhost:3000
 
-* Configuration
 
-* Database creation
+##API documentations
 
-* Database initialization
+```
+GET /crawlers.json
+POST /crawlers.json
+```
 
-* How to run the test suite
+### GET /crawlers.json
 
-* Services (job queues, cache servers, search engines, etc.)
+* Open postman 
 
-* Deployment instructions
 
-* ...
+```
+GET localhost:3000/crawlers.json
+```
+
+ 
+* Headers 
+```
+{ Content-Type: application/x-www-form-urlencoded }
+```
+* Sample response
+
+```
+[
+    {
+        "id": 1,
+        "site_url": "google.com",
+        "contents": "search",
+        "created_at": "2018-01-23T06:25:55.151Z",
+        "updated_at": "2018-01-23T06:25:55.151Z"
+    }
+]
+```
+  
+### POST /crawlers.json  
+
+* Open postman 
+
+
+```
+POST localhost:3000/crawlers.json
+```
+
+ 
+* Headers 
+```
+{ Content-Type: application/x-www-form-urlencoded }
+```
+
+* Body 
+```
+{ crawler: { site_url: "google.com" }
+```
+
+* Sample response
+
+```
+{
+    "id": 1,
+    "site_url": "google.com",
+    "contents": "search",
+    "created_at": "2018-01-23T06:25:55.151Z",
+    "updated_at": "2018-01-23T06:25:55.151Z"
+}
+```
